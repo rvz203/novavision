@@ -1,0 +1,92 @@
+.button {
+  position: relative;
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  overflow: hidden;
+  padding: 0.9rem 1.35rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.93rem;
+  font-weight: 750;
+  letter-spacing: -0.015em;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.35s ease;
+}
+
+.button::after {
+  position: absolute;
+  inset: -1px auto -1px -45%;
+  width: 32%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+  content: "";
+  transform: skewX(-20deg);
+  transition: left 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.button:hover {
+  transform: translateY(-3px);
+}
+
+.button:hover::after {
+  left: 120%;
+}
+
+.button:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.button svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[dir="ltr"] .button:hover svg {
+  transform: translate(3px, -3px);
+}
+
+[dir="rtl"] .button:hover svg {
+  transform: translate(-3px, -3px);
+}
+
+.primary {
+  background: var(--accent);
+  box-shadow: 0 14px 34px rgba(201, 245, 49, 0.16);
+  color: var(--accent-ink);
+}
+
+.primary:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 18px 42px rgba(201, 245, 49, 0.24);
+}
+
+.secondary {
+  border-color: var(--border-strong);
+  background: transparent;
+  color: var(--foreground);
+}
+
+.secondary:hover {
+  border-color: var(--foreground);
+  background: color-mix(in srgb, var(--card-hover) 86%, transparent);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+@media (max-width: 520px) {
+  .button {
+    min-height: 50px;
+    padding-inline: 1.1rem;
+  }
+}

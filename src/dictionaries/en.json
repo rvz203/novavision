@@ -1,0 +1,162 @@
+{
+  "common": {
+    "novanTrade": "NovaVison",
+    "home": "Home",
+    "about": "About Us",
+    "blog": "Insights",
+    "contact": "Contact",
+    "startInquiry": "Start an inquiry",
+    "discoverExpertise": "Explore our expertise",
+    "allRightsReserved": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "home": {
+    "companies": {
+      "eyebrow": "The NovaVision group",
+      "title": "Our companies.",
+      "subtitle": "Meet the companies that are part of NovaVision.",
+      "groupLabel": "A NovaVision group company",
+      "noviraName": "Novira",
+      "noviraDescription": "Novira is part of the NovaVision group. Discover the company on its dedicated website.",
+      "noviraUrl": "https://novira.novavisiontrade.com",
+      "visitLabel": "Explore Novira"
+    },
+    "heroTitle": "International trade, seen differently.",
+    "heroSubtitle": "Integrated sourcing, logistics, and supply-chain intelligence for confident movement across borders.",
+    "partnerTitle": "One clear view. Every moving part.",
+    "partnerSubtitle": "NovaVison connects specialist execution, market intelligence, and supply-chain visibility into one confident commercial path.",
+    "marketAnalysis": {
+      "title": "Market Analysis",
+      "desc": "Careful market analysis to identify the best opportunities and mitigate risks."
+    },
+    "reliableSourcing": {
+      "title": "Reliable Sourcing",
+      "desc": "Rigorous supplier identification and background assessment."
+    },
+    "qualityAssurance": {
+      "title": "Quality Assurance",
+      "desc": "Ensuring quality and financial stability across all operations."
+    },
+    "servicesTitle": "From complexity to clarity.",
+    "servicesSubtitle": "Specialist execution across every stage of international trade.",
+    "services": {
+      "sourcing": {
+        "title": "International Sourcing",
+        "desc": "We identify, evaluate, and select reliable suppliers based on commercial, operational, financial, and quality criteria."
+      },
+      "import": {
+        "title": "Import Management",
+        "desc": "We manage the operational and commercial stages of importing raw materials while considering regulatory, documentation, logistics, and customs requirements."
+      },
+      "export": {
+        "title": "Export Solutions",
+        "desc": "We help businesses enter new international markets through structured export planning and execution."
+      },
+      "logistics": {
+        "title": "Logistics & Supply Chain",
+        "desc": "We coordinate the movement of goods from the supplier to the final destination while controlling cost, time, and risk."
+      }
+    },
+    "processTitle": "A clear path through global trade.",
+    "steps": {
+      "assessment": {
+        "title": "Initial Assessment",
+        "desc": "Reviewing client requirements, volumes, and priorities."
+      },
+      "risk": {
+        "title": "Risk Analysis",
+        "desc": "Analyzing markets, regulations, and logistics conditions."
+      },
+      "supplier": {
+        "title": "Supplier Evaluation",
+        "desc": "Assessing quality, capability, and delivery performance."
+      },
+      "proposal": {
+        "title": "Commercial Proposal",
+        "desc": "Structuring sourcing, conditions, and timelines."
+      },
+      "execution": {
+        "title": "Execution",
+        "desc": "Coordinating operations until final delivery."
+      },
+      "review": {
+        "title": "Performance Review",
+        "desc": "Evaluating supplier performance and optimizing."
+      }
+    },
+    "ctaTitle": "Build a more reliable supply chain.",
+    "ctaSubtitle": "Whether you are searching for raw materials, entering a new market, or improving your international operations, NovaVison can help.",
+    "contactBtn": "Start a conversation"
+  },
+  "about": {
+    "heroTitle": "About NovaVison",
+    "heroSubtitle": "Professional expertise, structured execution, and reliable partnerships in international trade.",
+    "whoWeAre": "Who We Are",
+    "whoWeAreDesc": "NovaVison is an international trading company specializing in sourcing, import, export, logistics, and supply-chain management. The company was established to help businesses manage international commercial operations through a more organized, transparent, and risk-aware approach.",
+    "missionTitle": "Our Mission",
+    "missionDesc": "To simplify international trade and help businesses establish reliable, transparent, and sustainable sourcing and supply-chain operations.",
+    "visionTitle": "Our Vision",
+    "visionDesc": "To become a trusted regional and international commercial partner recognized for professional execution, responsible decision-making, and long-term business relationships.",
+    "valuesTitle": "Our Core Values",
+    "values": {
+      "trust": {
+        "title": "Trust",
+        "desc": "We believe sustainable trade begins with credibility, accountability, and clear commitments."
+      },
+      "transparency": {
+        "title": "Transparency",
+        "desc": "Our clients receive clear information about commercial conditions, processes, risks, and progress."
+      },
+      "quality": {
+        "title": "Quality",
+        "desc": "Supplier selection and operational decisions are made with close attention to product and service quality."
+      },
+      "responsibility": {
+        "title": "Responsibility",
+        "desc": "We take ownership of the processes we manage and maintain consistent communication throughout each project."
+      },
+      "professionalism": {
+        "title": "Professionalism",
+        "desc": "Our work is based on structured analysis, documented processes, and international business practices."
+      },
+      "partnership": {
+        "title": "Partnership",
+        "desc": "We prioritize relationships that create continuous value for all parties."
+      }
+    },
+    "careersTitle": "Grow with NovaVison",
+    "careersDesc": "We welcome professionals interested in international trade, supply-chain management, logistics, market analysis, and commercial operations.",
+    "submitResume": "Submit Your Résumé"
+  },
+  "contact": {
+    "heroTitle": "Let’s Discuss Your Business Requirements",
+    "heroSubtitle": "Contact NovaVison to request sourcing assistance, import or export management, logistics coordination, trade consultation, or a commercial partnership.",
+    "infoTitle": "Contact Information",
+    "headOffice": "Head Office",
+    "headOfficeDesc": "123 Global Trade Avenue, Commerce City",
+    "phone": "Phone",
+    "phoneDesc": "+1 234 567 890",
+    "email": "Email",
+    "emailGen": "General inquiries: info@novavison.com",
+    "emailBiz": "Business inquiries: business@novavison.com",
+    "hours": "Working Hours",
+    "hoursDays": "Monday to Friday: 9:00 AM - 6:00 PM",
+    "hoursWeekend": "Weekend: Closed",
+    "formTitle": "Business Inquiry Form",
+    "fullName": "Full Name",
+    "emailAddress": "Email Address",
+    "inquiryType": "Inquiry Type",
+    "message": "Message",
+    "submitBtn": "Submit Business Inquiry",
+    "selectOption": "Select an option...",
+    "optSourcing": "International Sourcing",
+    "optImport": "Import Management",
+    "optExport": "Export Services",
+    "optLogistics": "Logistics Coordination",
+    "optConsultation": "Trade Consultation",
+    "optPartnership": "Commercial Cooperation",
+    "optCareer": "Career Opportunity",
+    "optGeneral": "General Inquiry"
+  }
+}

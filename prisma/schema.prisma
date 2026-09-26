@@ -1,0 +1,122 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id             String   @id @default(uuid())
+  translationGroupId String?
+  title          String
+  slug           String   @unique
+  content        String
+  contentFormat  String   @default("html")
+  template       String   @default("standard")
+  excerpt        String?
+  coverImage     String?
+  category       String?
+  tags           String[] @default([])
+  author         String?  @default("NovaVison Team")
+  seoTitle       String?
+  seoDescription String?
+  featured       Boolean  @default(false)
+  published      Boolean  @default(false)
+  language       String   @default("en") // 'en', 'fa', 'ar'
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([translationGroupId])
+}
+
+model Dictionary {
+  id        String   @id @default(uuid())
+  language  String   @unique
+  content   Json
+  updatedAt DateTime @updatedAt
+}
+
+model AdminUser {
+  id           String        @id @default(uuid())
+  name         String
+  email        String        @unique
+  passwordHash String
+  role         String        @default("editor")
+  permissions  String[]      @default([])
+  active       Boolean       @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  activities   ActivityLog[]
+}
+
+model ActivityLog {
+  id          String     @id @default(uuid())
+  userId      String?
+  user        AdminUser? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  actorName   String
+  actorEmail  String
+  action      String
+  entityType  String
+  entityId    String?
+  scope       String?
+  description String
+  metadata    Json?
+  createdAt   DateTime   @default(now())
+
+  @@index([createdAt])
+  @@index([userId])
+  @@index([entityType, entityId])
+}
+
+model SiteVisual {
+  id        String   @id @default(uuid())
+  section   String
+  imageUrl  String   @default("")
+  altEn     String   @default("")
+  altFa     String   @default("")
+  altAr     String   @default("")
+  captionEn String   @default("")
+  captionFa String   @default("")
+  captionAr String   @default("")
+  motion    String   @default("reveal")
+  sortOrder Int      @default(0)
+  active    Boolean  @default(true)
+  source    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([section, active, sortOrder])
+}
+
+model EmailMessage {
+  id           String   @id @default(uuid())
+  direction    String   @default("inbound") // "inbound" | "outbound"
+  sender       String
+  senderName   String?
+  recipient    String
+  subject      String
+  content      String   @db.Text
+  htmlContent  String?  @db.Text
+  status       String   @default("received") // "received" | "sent" | "failed" | "unread" | "read"
+  tag          String?  @default("general")
+  inquiryType  String?
+  replyToId    String?
+  threadId     String?
+  hasReplied   Boolean  @default(false)
+  attachments  Json?    // [{ filename, url, size, contentType }]
+  isRead       Boolean  @default(false)
+  isStarred    Boolean  @default(false)
+  isArchived   Boolean  @default(false)
+  errorMessage String?  @db.Text
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([direction, createdAt])
+  @@index([isRead, createdAt])
+  @@index([isStarred, createdAt])
+  @@index([replyToId])
+  @@index([threadId])
+}

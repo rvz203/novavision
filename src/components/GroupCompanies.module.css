@@ -1,0 +1,23 @@
+.section{position:relative;padding:clamp(5rem,9vw,8rem) 0;background:var(--paper);overflow:hidden;scroll-margin-top:110px}
+.layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2.5rem,7vw,7rem);align-items:center}
+.eyebrow{display:block;margin-bottom:1.5rem;color:var(--violet);font-size:.8rem;font-weight:750;letter-spacing:.09em;text-transform:uppercase}
+.intro h2{max-width:720px;margin-bottom:1.5rem;color:var(--foreground);font-size:clamp(3rem,5.4vw,5.8rem);line-height:1;letter-spacing:-.06em}
+.intro p{max-width:550px;color:var(--text-secondary);font-size:1.08rem;line-height:1.8}
+.company{position:relative;display:block;padding:clamp(1.6rem,3vw,2.8rem);border:1px solid rgba(119,108,255,.34);border-radius:24px;background:radial-gradient(ellipse at 94% 8%,rgba(119,108,255,.25),transparent 60%),var(--midnight);color:#fff;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.company:hover{border-color:var(--violet);box-shadow:0 22px 55px rgba(23,20,65,.18)}
+.company:focus-visible{outline:3px solid var(--violet);outline-offset:5px}
+.companyTop,.companyBottom{position:relative;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.companyTop>svg{width:24px;height:24px;color:var(--accent);transition:transform .25s}
+.company:hover .companyTop>svg{transform:translate(3px,-3px)}
+.affiliation{color:var(--accent);font-size:.76rem;font-weight:700}
+.wordmark{display:flex;align-items:center;gap:1.3rem;margin:3rem 0 1.5rem;direction:ltr}
+.wordmark h3{color:#fff;font-family:var(--font-display);font-size:clamp(3.5rem,5vw,5.6rem);line-height:1;letter-spacing:-.055em}
+.symbol{position:relative;display:grid;width:70px;height:70px;place-items:center;border:1px solid rgba(119,108,255,.5);border-radius:50%;color:var(--accent);font-size:2rem;font-weight:650;flex:none}
+.symbol i{position:absolute;inset:-7px;border:1px solid rgba(70,207,255,.24);border-radius:50%;transform:rotate(-30deg) scaleY(.66)}
+.company>p{position:relative;max-width:430px;min-height:3.5em;color:#c4cbe0;line-height:1.8;font-size:1rem}
+.companyBottom{margin-top:2.3rem;padding-top:1.4rem;border-top:1px solid rgba(205,214,255,.2);flex-wrap:wrap}
+.companyBottom>span{font-size:.85rem;font-weight:700;color:#fff}
+.companyBottom>small{color:#c4cbe0;font-size:.75rem;overflow-wrap:anywhere}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.company{max-width:760px}.intro h2{max-width:680px}}
+@media(max-width:520px){.wordmark{gap:1rem}.symbol{width:55px;height:55px}.companyBottom{align-items:flex-start;flex-direction:column}.intro p{font-size:1rem}}
+@media(prefers-reduced-motion:reduce){.company,.companyTop>svg{transition:none}.company:hover .companyTop>svg{transform:none}}

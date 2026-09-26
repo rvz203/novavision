@@ -1,0 +1,266 @@
+.blog-post-container {
+  max-width: 940px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 10.5rem 2rem 6rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+  color: var(--violet);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.back-link svg {
+  transition: transform 0.25s ease;
+}
+
+.back-link:hover svg {
+  transform: translateX(4px);
+}
+
+.blog-header {
+  padding-bottom: 2.5rem;
+}
+
+.blog-category {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--violet);
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.blog-title {
+  margin-bottom: 1.5rem;
+  font-size: clamp(3.2rem, 7vw, 6.6rem);
+  font-weight: 650;
+  letter-spacing: -0.065em;
+  line-height: 0.98;
+}
+
+.blog-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.blog-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+}
+
+.blog-cover {
+  overflow: hidden;
+  aspect-ratio: 16 / 8.5;
+  border-radius: 20px;
+  margin: 1rem 0 3rem;
+  background: var(--card-bg);
+  box-shadow: var(--shadow-soft);
+}
+
+.blog-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-lead {
+  position: relative;
+  margin: 0 0 3rem;
+  padding: 1.5rem 1.75rem;
+  border-inline-start: 3px solid var(--accent);
+  border-radius: 0 12px 12px 0;
+  background: var(--card-bg);
+  color: var(--foreground);
+  font-size: 1.12rem;
+  line-height: 1.9;
+}
+
+.blog-content {
+  color: var(--foreground);
+  font-size: 1.07rem;
+  line-height: 2;
+}
+
+.blog-content p {
+  margin-bottom: 1.5rem;
+  color: var(--foreground);
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.blog-content h2 {
+  margin: 3.5rem 0 1rem;
+  font-size: 2.1rem;
+}
+
+.blog-content h3 {
+  margin: 2.5rem 0 0.8rem;
+  font-size: 1.5rem;
+}
+
+.blog-content ul,
+.blog-content ol {
+  margin-bottom: 1.7rem;
+  padding-inline-start: 2rem;
+}
+
+.blog-content li {
+  margin-bottom: 0.55rem;
+}
+
+.blog-content blockquote {
+  padding: 1.3rem 1.6rem;
+  border-inline-start: 3px solid var(--violet);
+  border-radius: 10px;
+  margin: 2rem 0;
+  background: var(--card-bg);
+  color: var(--text-secondary);
+}
+
+.blog-content pre {
+  overflow: auto;
+  padding: 1.5rem;
+  border-radius: 14px;
+  margin-bottom: 1.7rem;
+  background: var(--midnight);
+  color: #eef2ff;
+  direction: ltr;
+}
+
+.blog-content code {
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  background: var(--card-bg);
+  font-family: monospace;
+}
+
+.blog-content pre code {
+  padding: 0;
+  background: transparent;
+}
+
+.blog-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 2rem auto;
+  border-radius: 16px;
+}
+
+.blog-content figure {
+  margin: 2.2rem 0;
+}
+
+.blog-content figcaption {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.blog-content table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.92rem;
+}
+
+.blog-content th,
+.blog-content td {
+  padding: 0.8rem;
+  border: 1px solid var(--border-color);
+  text-align: start;
+  overflow-wrap: anywhere;
+  vertical-align: top;
+}
+
+.blog-content .blog-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.blog-content .blog-table-scroll table {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.blog-content table img {
+  margin: 0.5rem auto;
+}
+
+.blog-content th {
+  background: var(--card-bg);
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 3.5rem;
+}
+
+.blog-tags span {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+}
+
+.template-news .blog-title {
+  font-size: clamp(2.9rem, 6vw, 5.5rem);
+}
+
+.template-guide .blog-content {
+  counter-reset: steps;
+}
+
+.template-guide .blog-content h2 {
+  counter-increment: steps;
+}
+
+.template-guide .blog-content h2::before {
+  display: inline-grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border-radius: 50%;
+  margin-inline-end: 0.65rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  content: counter(steps);
+  font-size: 0.82rem;
+  vertical-align: middle;
+}
+
+@media (max-width: 640px) {
+  .blog-post-container {
+    padding: 8rem 1.2rem 4rem;
+  }
+
+  .blog-title {
+    font-size: clamp(3rem, 14vw, 4.8rem);
+  }
+
+  .blog-cover {
+    border-radius: 14px;
+  }
+
+  .blog-lead,
+  .blog-content {
+    font-size: 1rem;
+  }
+
+  .blog-content h2 {
+    font-size: 1.65rem;
+  }
+}

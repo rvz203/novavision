@@ -1,0 +1,185 @@
+.frame {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #0a1025;
+  box-shadow: 0 30px 75px rgba(3, 8, 25, 0.22);
+  isolation: isolate;
+}
+
+.media {
+  position: absolute;
+  inset: -2.5%;
+}
+
+.image {
+  object-fit: cover;
+  transition: filter 0.7s ease, transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.frame::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 48%, rgba(3, 7, 23, 0.82) 100%);
+  content: "";
+  pointer-events: none;
+}
+
+.frameLine {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.frame figcaption {
+  position: absolute;
+  z-index: 3;
+  right: 1.35rem;
+  bottom: 1.2rem;
+  left: 1.35rem;
+  color: #fff;
+  font-size: clamp(0.78rem, 1.15vw, 0.98rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+}
+
+.frame:hover .image {
+  filter: saturate(1.08) contrast(1.03);
+  transform: scale(1.025);
+}
+
+.boardSection {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(5.5rem, 10vw, 10rem) 0;
+  background:
+    radial-gradient(circle at 8% 18%, rgba(70, 207, 255, 0.12), transparent 24%),
+    radial-gradient(circle at 92% 82%, rgba(119, 108, 255, 0.16), transparent 27%),
+    #060a19;
+  color: #fff;
+}
+
+.boardSection::before {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 68px 68px;
+  content: "";
+  mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+  pointer-events: none;
+}
+
+.boardHeading {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 2.1fr) minmax(80px, 0.4fr);
+  align-items: end;
+  gap: 1.5rem;
+  margin-bottom: clamp(2.2rem, 5vw, 4.5rem);
+}
+
+.boardHeading span {
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.boardHeading h2 {
+  max-width: 880px;
+  background: linear-gradient(112deg, #fff 32%, #aaa5ff 82%);
+  background-clip: text;
+  color: transparent;
+  font-size: clamp(3rem, 6.2vw, 6.6rem);
+  letter-spacing: -0.07em;
+  line-height: 0.92;
+}
+
+.boardHeading i {
+  height: 1px;
+  margin-bottom: 0.6rem;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.boardGrid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: 860px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+  gap: clamp(0.8rem, 1.6vw, 1.4rem);
+}
+
+.boardItem1 { grid-area: 1 / 1 / 5 / 8; }
+.boardItem2 { grid-area: 1 / 8 / 4 / 13; }
+.boardItem3 { grid-area: 5 / 1 / 7 / 5; }
+.boardItem4 { grid-area: 4 / 8 / 7 / 13; }
+.boardItem5 { grid-area: 5 / 5 / 7 / 8; }
+
+.featureFrame {
+  width: 100%;
+  min-height: 420px;
+  aspect-ratio: 4 / 3;
+}
+
+@media (max-width: 900px) {
+  .boardHeading {
+    grid-template-columns: 1fr;
+  }
+
+  .boardHeading i {
+    width: 120px;
+  }
+
+  .boardGrid {
+    min-height: 1080px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: repeat(10, minmax(0, 1fr));
+  }
+
+  .boardItem1 { grid-area: 1 / 1 / 5 / 7; }
+  .boardItem2 { grid-area: 5 / 1 / 8 / 4; }
+  .boardItem3 { grid-area: 5 / 4 / 8 / 7; }
+  .boardItem4 { grid-area: 8 / 1 / 11 / 5; }
+  .boardItem5 { grid-area: 8 / 5 / 11 / 7; }
+}
+
+@media (max-width: 620px) {
+  .boardSection {
+    padding: 5rem 0;
+  }
+
+  .boardGrid {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+  }
+
+  .boardGrid .frame {
+    min-height: 250px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .boardGrid .frame:first-child {
+    aspect-ratio: 5 / 4;
+  }
+
+  .featureFrame {
+    min-height: 310px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image {
+    transition: none;
+  }
+}
