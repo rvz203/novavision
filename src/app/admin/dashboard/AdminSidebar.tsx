@@ -11,6 +11,8 @@ import {
   Mail,
   Menu,
   ShieldCheck,
+  Settings,
+  Search,
   Sparkles,
   Users,
   X,
@@ -20,6 +22,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { logout } from "@/app/actions/auth";
 import { canAccess } from "@/lib/permissions";
+import BrandLogo from "@/components/BrandLogo";
 
 type SidebarUser = { name: string; email: string; role: string; permissions: string[] };
 
@@ -31,6 +34,8 @@ export default function AdminSidebar({ user }: { user: SidebarUser }) {
     { href: "/admin/dashboard/emails", label: "ایمیل و پیام‌ها", icon: Mail, show: canAccess(user.permissions, "emails.manage", user.role) },
     { href: "/admin/dashboard/pages", label: "برگه‌ها", icon: Files, show: canAccess(user.permissions, "pages.write", user.role) },
     { href: "/admin/dashboard/visuals", label: "استودیوی تصویری", icon: Sparkles, show: canAccess(user.permissions, "pages.write", user.role) },
+    { href: "/admin/dashboard/branding", label: "لوگو و آیکن مرورگر", icon: Settings, show: canAccess(user.permissions, "pages.write", user.role) },
+    { href: "/admin/dashboard/seo", label: "تنظیمات سئو", icon: Search, show: canAccess(user.permissions, "pages.write", user.role) },
     { href: "/admin/dashboard/media", label: "رسانه‌ها", icon: ImageIcon, show: canAccess(user.permissions, "media.write", user.role) },
     { href: "/admin/dashboard/users", label: "کاربران و دسترسی‌ها", icon: Users, show: canAccess(user.permissions, "users.manage", user.role) },
     { href: "/admin/dashboard/activity", label: "تاریخچه فعالیت", icon: Activity, show: canAccess(user.permissions, "activity.read", user.role) },
@@ -42,7 +47,7 @@ export default function AdminSidebar({ user }: { user: SidebarUser }) {
       <div className={`sidebar-backdrop ${open ? "is-open" : ""}`} onClick={() => setOpen(false)} />
       <aside className={`admin-sidebar ${open ? "is-open" : ""}`}>
         <div className="sidebar-brand">
-          <span className="brand-mark">N</span>
+          <BrandLogo className="admin-brand-logo"><span className="brand-mark">N</span></BrandLogo>
           <div><strong>NovaVison</strong><span>مدیریت محتوا</span></div>
           <button className="sidebar-close" type="button" onClick={() => setOpen(false)} aria-label="بستن منو"><X size={20} /></button>
         </div>

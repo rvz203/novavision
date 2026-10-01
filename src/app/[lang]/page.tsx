@@ -8,6 +8,14 @@ import GroupCompanies from "@/components/GroupCompanies";
 import styles from "./page.module.css";
 import { getDictionary, Locale } from "@/dictionaries";
 import { getSiteVisuals } from "@/lib/site-visuals";
+import { getPageMetadata } from "@/lib/seo";
+import { getPageSchema, getServicesSchema } from "@/lib/seo-schema";
+import JsonLd from "@/components/JsonLd";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params;
+  return getPageMetadata(lang, "home");
+}
 
 export default async function Home(props: { params: Promise<{ lang: Locale }> }) {
   const { lang } = await props.params;
@@ -52,6 +60,8 @@ export default async function Home(props: { params: Promise<{ lang: Locale }> })
 
   return (
     <>
+      <JsonLd data={await getPageSchema(lang, "home")} />
+      <JsonLd data={getServicesSchema(lang, dict.home.services)} />
       <Header lang={lang} dict={dict.common} />
       <main className={styles.main}>
         <section className={styles.hero}>

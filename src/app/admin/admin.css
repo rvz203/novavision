@@ -1475,6 +1475,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 
 /* Blog media and table controls use explicit, keyboard-accessible sizing inputs. */
+.admin-brand-logo{display:block;max-width:110px;max-height:42px;width:auto;height:auto;object-fit:contain}
 .rich-editor .editor-toolbar{flex-wrap:wrap;overflow:visible;gap:4px}
 .rich-editor .editor-toolbar button{min-width:36px;min-height:36px}
 .rich-editor .editor-toolbar .editor-labelled-button{width:auto;padding:0 10px;gap:6px;white-space:nowrap}

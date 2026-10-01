@@ -7,6 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import styles from "./Header.module.css";
 import ThemeToggle from "./ThemeToggle";
 import Button from "./Button";
+import BrandLogo from "./BrandLogo";
 
 type HeaderDictionary = {
   novanTrade: string;
@@ -36,8 +37,10 @@ export default function Header({ lang, dict }: { lang: string; dict: HeaderDicti
   }, []);
 
   const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const locale = event.target.value;
+    const translated = document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${locale}"]`);
     const currentPathWithoutLang = pathname.replace(`/${lang}`, "");
-    window.location.assign(`/${event.target.value}${currentPathWithoutLang}`);
+    window.location.assign(translated?.href || (currentPathWithoutLang.startsWith("/blog/") ? `/${locale}/blog` : `/${locale}${currentPathWithoutLang}`));
   };
 
   const navigation = [
@@ -54,10 +57,10 @@ export default function Header({ lang, dict }: { lang: string; dict: HeaderDicti
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={`container ${styles.nav}`}>
         <Link href={`/${lang}`} className={styles.logo} onClick={() => setIsMenuOpen(false)}>
-          <span className={styles.logoMark} aria-hidden="true">
-            <span />
-          </span>
-          <span>{dict.novanTrade}</span>
+          <BrandLogo className={styles.logoImage}>
+            <span className={styles.logoMark} aria-hidden="true"><span /></span>
+            <span>{dict.novanTrade}</span>
+          </BrandLogo>
         </Link>
 
         <nav id="site-navigation" className={`${styles.links} ${isMenuOpen ? styles.open : ""}`}>

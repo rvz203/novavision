@@ -53,6 +53,15 @@
   letter-spacing: -0.055em;
 }
 
+.logoImage {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(240px, 100%);
+  max-height: 64px;
+  object-fit: contain;
+}
+
 .brandMark {
   display: block;
   width: 12px;

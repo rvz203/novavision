@@ -55,6 +55,15 @@
   white-space: nowrap;
 }
 
+.logoImage {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 190px;
+  max-height: 42px;
+  object-fit: contain;
+}
+
 .logoMark {
   position: relative;
   display: grid;
@@ -273,6 +282,10 @@
 }
 
 @media (max-width: 420px) {
+  .logoImage {
+    max-width: 125px;
+    max-height: 36px;
+  }
   .logoMark {
     display: none;
   }

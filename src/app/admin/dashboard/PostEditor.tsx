@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useDeferredValue, useMemo, useState, useTransition } from "react";
 import { EDITOR_LANGUAGES, EditorLanguage, EditorPost, EditorTranslation, LANGUAGE_META, makeSlug, MultilingualEditorPost, POST_TEMPLATES } from "./editor-data";
 import ImageUploader from "./ImageUploader";
+import SeoPreviewPanel from "./SeoPreviewPanel";
 
 const RichTextEditor = dynamic(() => import("./RichTextEditor"), { ssr: false });
 const BlogLivePreview = dynamic(() => import("./BlogLivePreview"), { ssr: false });
@@ -73,6 +74,7 @@ export default function PostEditor({ initialPost }: { initialPost: MultilingualE
         <TranslationSection title="عنوان سئو" hint="حداکثر ۷۰ نویسه">{(lang) => <input dir={LANGUAGE_META[lang].dir} value={post.translations[lang].seoTitle} maxLength={70} onChange={(e) => updateTranslation(lang, "seoTitle", e.target.value)} className="admin-input" />}</TranslationSection>
         <TranslationSection title="توضیحات سئو" hint="حداکثر ۱۸۰ نویسه">{(lang) => <textarea dir={LANGUAGE_META[lang].dir} value={post.translations[lang].seoDescription} maxLength={180} onChange={(e) => updateTranslation(lang, "seoDescription", e.target.value)} className="admin-input" rows={3} />}</TranslationSection>
       </div>
+      <SeoPreviewPanel translations={post.translations} coverImage={post.coverImage} />
       <aside className="shared-post-settings"><div className="settings-heading"><Settings2 size={18} /> تنظیمات مشترک هر سه زبان</div><ImageUploader value={post.coverImage} onChange={(value) => updateShared("coverImage", value)} compact /><label className="toggle-field"><input type="checkbox" checked={post.featured} onChange={(e) => updateShared("featured", e.target.checked)} /><span className="toggle-control" /><span><strong>نوشته ویژه</strong><small>در فهرست هر سه زبان برجسته می‌شود</small></span></label></aside>
     </section><BlogLivePreview post={previewPost} previewLanguage={previewLanguage} onLanguageChange={setPreviewLanguage} /></div>
   </div>;

@@ -3,6 +3,7 @@
 import { login } from "@/app/actions/auth";
 import { ArrowLeft, Eye, EyeOff, LockKeyhole, Mail } from "lucide-react";
 import { useState, useTransition } from "react";
+import BrandLogo from "@/components/BrandLogo";
 
 export default function AdminLogin() {
   const [error, setError] = useState("");
@@ -24,7 +25,7 @@ export default function AdminLogin() {
   return (
     <main className="admin-login-screen">
       <section className="login-visual" aria-hidden="true">
-        <div className="login-brand"><span className="brand-mark">N</span><span>NovaVison</span></div>
+        <div className="login-brand"><BrandLogo className="admin-brand-logo"><span className="brand-mark">N</span></BrandLogo><span>NovaVison</span></div>
         <div className="login-copy"><h1>محتوای بهتر،<br />همکاری شفاف‌تر.</h1><p>فضای یکپارچه مدیریت وب‌سایت، وبلاگ چندزبانه و تیم NovaVison</p></div>
         <div className="login-pattern" />
       </section>

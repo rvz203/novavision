@@ -26,7 +26,7 @@ export function proxy(request: NextRequest) {
 
   // Redirect if there is no locale
   request.nextUrl.pathname = `/${defaultLocale}${pathname}`;
-  return NextResponse.redirect(request.nextUrl);
+  return NextResponse.redirect(request.nextUrl, 308);
 }
 
 export const config = {

@@ -5,14 +5,16 @@ import Button from "@/components/Button";
 import FadeIn from "@/components/FadeIn";
 import { FeatureVisual } from "@/components/EditorialVisuals";
 import styles from "./page.module.css";
-import { Metadata } from "next";
 import { getDictionary, Locale } from "@/dictionaries";
 import { getSiteVisuals } from "@/lib/site-visuals";
+import { getPageMetadata } from "@/lib/seo";
+import { getPageSchema } from "@/lib/seo-schema";
+import JsonLd from "@/components/JsonLd";
 
-export const metadata: Metadata = {
-  title: "About Us | NovaVison",
-  description: "Learn about NovaVison's mission, vision, and core values.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params;
+  return getPageMetadata(lang, "about");
+}
 
 export default async function About(props: { params: Promise<{ lang: Locale }> }) {
   const { lang } = await props.params;
@@ -23,6 +25,7 @@ export default async function About(props: { params: Promise<{ lang: Locale }> }
 
   return (
     <>
+      <JsonLd data={await getPageSchema(lang, "about")} />
       <Header lang={lang} dict={dict.common} />
       <main className={styles.main}>
         {/* Hero */}

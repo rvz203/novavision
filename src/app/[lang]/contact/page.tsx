@@ -3,13 +3,15 @@ import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import ContactForm from "./ContactForm";
 import styles from "./page.module.css";
-import { Metadata } from "next";
 import { getDictionary, Locale } from "@/dictionaries";
+import { getPageMetadata } from "@/lib/seo";
+import { getPageSchema } from "@/lib/seo-schema";
+import JsonLd from "@/components/JsonLd";
 
-export const metadata: Metadata = {
-  title: "Contact Us | NovaVison",
-  description: "Get in touch with NovaVison for business inquiries.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params;
+  return getPageMetadata(lang, "contact");
+}
 
 export default async function Contact(props: { params: Promise<{ lang: Locale }> }) {
   const { lang } = await props.params;
@@ -17,6 +19,7 @@ export default async function Contact(props: { params: Promise<{ lang: Locale }>
 
   return (
     <>
+      <JsonLd data={await getPageSchema(lang, "contact")} />
       <Header lang={lang} dict={dict.common} />
       <main className={styles.main}>
         {/* Hero */}

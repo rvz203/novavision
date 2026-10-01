@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BriefcaseBusiness, Globe2, Mail } from "lucide-react";
 import styles from "./Footer.module.css";
+import BrandLogo from "./BrandLogo";
 
 type FooterDictionary = {
   novanTrade: string;
@@ -18,8 +19,10 @@ export default function Footer({ dict, lang }: { dict: FooterDictionary; lang: s
       <div className={`container ${styles.grid}`}>
         <div className={styles.brandColumn}>
           <Link href={`/${lang}`} className={styles.brand}>
-            <span className={styles.brandMark} aria-hidden="true" />
-            {dict.novanTrade}
+            <BrandLogo className={styles.logoImage}>
+              <span className={styles.brandMark} aria-hidden="true" />
+              {dict.novanTrade}
+            </BrandLogo>
           </Link>
           <p className={styles.desc}>International sourcing &amp; logistics.</p>
           <div className={styles.socials} aria-label="NovaVison links">

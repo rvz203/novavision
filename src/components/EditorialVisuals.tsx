@@ -35,7 +35,7 @@ function MediaFrame({
   return (
     <motion.figure
       className={`${styles.frame} ${className}`}
-      initial={reducedMotion ? false : { opacity: 0, y: 34, clipPath: "inset(9% 0 9% 0 round 24px)" }}
+      initial={reducedMotion ? false : { opacity: 1, y: 34, clipPath: "inset(9% 0 9% 0 round 24px)" }}
       whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, clipPath: "inset(0% 0 0% 0 round 24px)" }}
       viewport={{ once: true, amount: 0.22 }}
       transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}

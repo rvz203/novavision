@@ -5,6 +5,15 @@ import Link from "next/link";
 import { FeatureVisual } from "@/components/EditorialVisuals";
 import { getSiteVisuals } from "@/lib/site-visuals";
 import "./blog-list.css";
+import { getPageMetadata } from "@/lib/seo";
+import { getPageSchema } from "@/lib/seo-schema";
+import JsonLd from "@/components/JsonLd";
+import { postPath } from "@/lib/seo-config";
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params;
+  return getPageMetadata(lang, "blog");
+}
 
 const copy = {
   fa: { title: "دیدگاه‌ها و تحلیل‌ها", subtitle: "تازه‌ترین تحلیل‌های بازار، راهنماهای بازرگانی و خبرهای NovaVison", read: "مطالعه نوشته", empty: "هنوز نوشته‌ای منتشر نشده است.", minute: "دقیقه" },
@@ -28,6 +37,7 @@ export default async function BlogPage({ params }: { params: Promise<{ lang: Loc
 
   return (
     <main className="blog-index">
+      <JsonLd data={await getPageSchema(lang, "blog")} />
       <header className="blog-index-header">
         <div className="blog-index-copy">
           <h1>{text.title}</h1><p>{text.subtitle}</p>
@@ -37,11 +47,11 @@ export default async function BlogPage({ params }: { params: Promise<{ lang: Loc
       </header>
 
       {featured ? (
-        <Link href={`/${lang}/blog/${featured.slug}`} className="featured-post">
+        <Link href={postPath(lang, featured.slug)} className="featured-post">
           <div className="featured-post-media">
             {featured.coverImage ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={featured.coverImage} alt="" />
+              <img src={featured.coverImage} alt={featured.title} decoding="async" />
             ) : <div className="post-image-placeholder">N</div>}
           </div>
           <div className="featured-post-content">
@@ -60,11 +70,11 @@ export default async function BlogPage({ params }: { params: Promise<{ lang: Loc
       {rest.length ? (
         <section className="post-grid">
           {rest.map((post) => (
-            <Link href={`/${lang}/blog/${post.slug}`} className="post-card" key={post.id}>
+            <Link href={postPath(lang, post.slug)} className="post-card" key={post.id}>
               <div className="post-card-media">
                 {post.coverImage ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={post.coverImage} alt="" />
+                  <img src={post.coverImage} alt={post.title} loading="lazy" decoding="async" />
                 ) : <div className="post-image-placeholder">N</div>}
               </div>
               <div className="post-card-body">

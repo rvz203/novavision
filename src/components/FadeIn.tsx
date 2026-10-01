@@ -42,9 +42,9 @@ export default function FadeIn({
         prefersReducedMotion
           ? visibleState
           : {
-              opacity: 0,
+              opacity: 1,
               ...directions[direction],
-              filter: "blur(10px)",
+              filter: "blur(0px)",
             }
       }
       whileInView={visibleState}

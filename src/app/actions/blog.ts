@@ -12,11 +12,14 @@ import {
 import { requirePermission } from "@/lib/admin-auth";
 import { recordActivity } from "@/lib/activity";
 import { revalidatePath } from "next/cache";
+import { postRedirectKey } from "@/lib/post-routing";
 
 function revalidateBlog(language: string, slug?: string) {
   revalidatePath(`/${language}/blog`);
   if (slug) revalidatePath(`/${language}/blog/${slug}`);
   revalidatePath("/admin/dashboard");
+  revalidatePath("/sitemap.xml");
+  revalidatePath("/feed.xml");
 }
 
 function validatedTranslations(payload: MultilingualPostPayload) {
@@ -88,7 +91,13 @@ export async function updatePost(id: string, payload: MultilingualPostPayload) {
   await prisma.$transaction(async (tx) => {
     for (const { language, data } of translations) {
       const existing = posts.find((post) => post.language === language);
-      if (existing) await tx.post.update({ where: { id: existing.id }, data: { ...data, translationGroupId: groupId } });
+      if (existing) {
+        if (existing.slug !== data.slug) {
+          const language = postRedirectKey(existing.language, existing.slug);
+          await tx.dictionary.upsert({ where: { language }, create: { language, content: { postId: existing.id } }, update: { content: { postId: existing.id } } });
+        }
+        await tx.post.update({ where: { id: existing.id }, data: { ...data, translationGroupId: groupId } });
+      }
       else await tx.post.create({ data: { ...data, translationGroupId: groupId } });
     }
     if (!payload.published) {
